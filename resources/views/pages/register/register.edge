@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register | Diet Tracking</title>
+  @vite(['resources/css/login.css', 'resources/js/app.js'])
+</head>
+<body>
+  @include('component/navigation')
+  <main class="content-container">
+    <div class="login-container">
+      <h2>Register</h2>
+      <form enctype="multipart/form-data" action="{{route("page.handleRegister")}}" method="POST">
+        {{csrfField()}}
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email">
+          @if (flashMessages.has('errors.email'))
+          <small style="color: red;">
+            {{ flashMessages.get('errors.email') }}
+          </small>
+          @endif
+        </div>
+        <div class="form-group">
+          <label for="email">Name</label>
+          <input type="text" id="name" name="name">
+          @if (flashMessages.has('errors.name'))
+          <small style="color: red;">
+            {{ flashMessages.get('errors.name') }}
+          </small>
+          @endif
+        </div>
+        <div class="form-group">
+          <label for="email">Picture</label>
+          <input type="file" id="picture" name="picture">
+          @if (flashMessages.has('errors.picture'))
+          <small style="color: red;">
+            {{ flashMessages.get('errors.picture') }}
+          </small>
+          @endif
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password">
+                    @if (flashMessages.has('errors.password'))
+          <small style="color: red;">
+            {{ flashMessages.get('errors.password') }}
+          </small>
+          @endif
+        </div>
+        <div class="form-group">
+          <label for="confirm_password">Confirm Password</label>
+          <input type="password" id="confirm_password" name="confirm_password">
+          @if (flashMessages.has('errors.confirm_password'))
+          <small style="color: red;">
+            {{ flashMessages.get('errors.confirm_password') }}
+          </small>
+          @endif
+        </div>
+        <button type="submit" class="default-button">Register</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

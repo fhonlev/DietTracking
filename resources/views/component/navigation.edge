@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  @vite(['resources/css/navigation.css', 'resources/js/app.js'])
+</head>
+<body>
+  <nav class="navbar">
+    <div class="app">
+      <header>
+        <nav class="navbar-container">
+          <div class="logo">
+            <h1>
+              <a href="{{ route('page.landing') }}">Diet Tracking</a>
+            </h1>
+          </div>
+          <div class="nav-links">
+            <ul>
+              @if (user)
+                <li><a href="{{ route('page.food') }}">Foods</a></li>
+                <li><a href="{{ route('page.profile') }}">{{user.name}}</a></li>
+                <li><a href="{{ route('page.logout') }}">Logout</a></li>
+              @else
+                <li><a href="{{ route('page.login') }}">Login</a></li>
+                <li><a href="{{ route('page.register') }}">Register</a></li>
+              @endif
+            </ul>
+          </div>
+        </nav>
+      </header>
+    </div>
+  </nav>
+</body>
+</html>

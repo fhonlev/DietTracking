@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login | Diet Tracking</title>
+  @vite(['resources/css/login.css', 'resources/js/app.js'])
+</head>
+<body>
+  @include('component/navigation')
+  <main class="content-container">
+    <div class="login-container">
+      <h2>Login</h2>
+      <form action="{{route('page.handleLogin')}}" method="POST">
+        {{ csrfField() }}
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" >
+          @if (flashMessages.has('errors.email'))
+          <small style="color: red;">
+            {{ flashMessages.get('errors.email') }}
+          </small>
+          @endif
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" >
+          @if (flashMessages.has('errors.password'))
+          <small style="color: red;">
+            {{ flashMessages.get('errors.password') }}
+          </small>
+          @endif
+        </div>
+        <button type="submit" class="default-button">Login</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>
